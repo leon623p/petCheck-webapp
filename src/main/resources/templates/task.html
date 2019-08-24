@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="..css/task.css" th:href="@{/css/task.css}"/>
+</head>
+<body>
+
+
+<h1>New Task</h1>
+<form action="#" th:action="@{/newtask}" th:object="${task}" method="post">
+    <p id="id" th:if="${task.id != null}"><input type="text" th:field="*{id}"/></p>
+    <p>Task: <input type="text" th:field="*{task}" /></p>
+    <p>Memo(optional): <input type="text" th:field="*{memo}" /></p>
+    <p> Everyday?<input type="checkbox" name="everyday" checked="checked"/></p>
+    <p>Date: <input type="date" th:field="*{date}" /></p>
+
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>

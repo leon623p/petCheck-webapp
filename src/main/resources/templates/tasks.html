@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../css/task.css" th:href="@{/css/task.css}"/>
+</head>
+<body>
+<p th:if="${task != null}" th:text="'Added: ' + ${task.task}"></p>
+<a th:href="@{/task}">Create New Task</a>
+<table>
+    <thead>
+    <tr>
+        <th>Task</th>
+        <th>Memo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${task}">
+        <td th:text="${task.task}">task</td>
+        <td th:text="${task.memo}">memo</td>
+        <td>
+            <a th:href="@{/task(id=${task.id})}">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
