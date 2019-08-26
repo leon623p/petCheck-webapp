@@ -1,8 +1,16 @@
 package com.petcheck.petcheck.model.Trip;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Trip {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private LocalDate depature;
     private int triplength;
     private LocalDate returndate;
