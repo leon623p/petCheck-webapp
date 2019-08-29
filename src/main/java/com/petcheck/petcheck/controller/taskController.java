@@ -23,22 +23,28 @@ public class taskController {
     }
 
     @GetMapping("/task")
-    public String task(@RequestParam(required = false, name = "id") Long id, Model model) {
-        Task task;
-        if (id == null) {
-            task = new Task();
-        } else {
-            task = taskService.findTaskById(id)
-                    .orElseThrow(() -> new EntityNotFoundException("Could not find cinema " + id));
-        }
-        model.addAttribute("task", task);
+        public String task(@RequestParam(required = false, name = "id") Long id, Model model) {
+            Task task;
+            if (id == null) {
+                task = new Task();
+            } else {
+                task = taskService.findTaskById(id)
+                        .orElseThrow(() -> new EntityNotFoundException("Could not find task" + id));
+            }
+            model.addAttribute("task", task);
 
-        return "task";
+            return "task";
     }
     @PostMapping("/task")
     public String saveTask(@ModelAttribute Task task, Model model) {
         taskService.saveTask(task);
-        model.addAttribute("tasks", taskService.getTasks());
+        model.addAttribute("tasks", taskService.findTasks());
+        return "tasks";
+    }
+
+    @GetMapping("/tasks")
+    public String tasksview(Model model) {
+        model.addAttribute("tasksget", taskService.findTasks());
         return "tasks";
     }
 }

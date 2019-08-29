@@ -1,22 +1,25 @@
-package com.petcheck.petcheck.model;
-
-        import com.petcheck.petcheck.model.Guides.Guide;
-
-        import java.util.LinkedList;
-
-public class GuideList {
-    public LinkedList<Guide> guidelist = new LinkedList<>();
-
-
-    public void addGuide(Guide guide) {
-        guidelist.add(guide);
-
-
-    }
-
-    public void displaylist() {
-        for (Guide list : guidelist) {
-            System.out.println(list.getName());
-        }
-    }
-}
+//package com.petcheck.petcheck.model;
+//
+//        import com.petcheck.petcheck.model.Note.Note;
+//
+//        import java.util.LinkedList;
+//
+//        //todo// this can just get put into the guide service class most likely
+//
+//
+//public class GuideList {
+//    public LinkedList<Note> guidelist = new LinkedList<>();
+//
+//
+//    public void addGuide(Note guide) {
+//        guidelist.add(guide);
+//
+//
+//    }
+//
+//    public void displaylist() {
+//        for (Note list : guidelist) {
+//            System.out.println(list.getName());
+//        }
+//    }
+//}

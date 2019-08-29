@@ -7,7 +7,7 @@
           href="../css/task.css" th:href="@{/css/task.css}"/>
 </head>
 <body>
-<p th:if="${task != null}" th:text="'Added: ' + ${task.task}"></p>
+<p th:if="${task != null}" th:text="'Added: ' + ${task.taskname}"></p>
 <a th:href="@{/task}">Create New Task</a>
 <table>
     <thead>
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     <tr th:each="task : ${task}">
-        <td th:text="${task.task}">task</td>
+        <td th:text="${task.taskname}">taskname</td>
         <td th:text="${task.memo}">memo</td>
         <td>
             <a th:href="@{/task(id=${task.id})}">Edit</a>

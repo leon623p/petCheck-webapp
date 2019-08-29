@@ -12,7 +12,7 @@
 	<artifactId>petcheck</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>petcheck</name>
-	<description>task list for caretakers during vacation </description>
+	<description>taskname list for caretakers during vacation </description>
 
 	<properties>
 		<java.version>12</java.version>

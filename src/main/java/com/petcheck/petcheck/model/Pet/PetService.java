@@ -6,8 +6,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PetService {
     private PetRepository prerepository;
-@Autowired
+
+    @Autowired
     public PetService(PetRepository prerepository) {
         this.prerepository = prerepository;
+    }
+
+    public void savePet(Pet pet) { prerepository.save(pet);
     }
 }

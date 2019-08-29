@@ -1,8 +1,6 @@
 package com.petcheck.petcheck.model.Task;
 
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,13 +13,31 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String task;
+    private String taskname;
     private String memo;
     private LinkedList<LocalDate> daterange = new LinkedList();
     private boolean iseverday;
 
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTaskname(String taskname) {
+        this.taskname = taskname;
+    }
+
+    public LinkedList<LocalDate> getDaterange() {
+        return daterange;
+    }
+
+    public void setDaterange(LinkedList<LocalDate> daterange) {
+        this.daterange = daterange;
+    }
 
     public boolean hasdate(LocalDate date) {
         boolean hasdate = false;
@@ -70,24 +86,24 @@ public class Task {
     }
 
     public Task(String task, String memo) {
-        this.task = task;
+        this.taskname = task;
         this.memo = memo;
         this.iseverday = true;
 
     }
 
-    public String getTask() {
-        return task;
+    public String getTaskname() {
+        return taskname;
     }
 
     public Task(String task) {
-        this.task = task;
+        this.taskname = task;
         this.iseverday = true;
 
     }
 
     public Task(String task, String memo, LocalDate machinedate) {
-        this.task = task;
+        this.taskname = task;
         this.memo = memo;
         this.iseverday = false;
         daterange.add(machinedate);

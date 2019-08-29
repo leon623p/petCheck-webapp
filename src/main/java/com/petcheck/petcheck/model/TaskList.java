@@ -20,7 +20,7 @@ public class TaskList {
 
     public void removeTask(Task rmvtask) {
         for (Task list : tasklist) {
-            if (rmvtask.getTask().equals(list.getTask())) {
+            if (rmvtask.getTaskname().equals(list.getTaskname())) {
                 tasklist.remove(list);
 
             }
@@ -51,10 +51,10 @@ public class TaskList {
 //        //tested this method can create a new list just gotta look up the clone and or a copy methood
 //        for (Task list : tasklist) {
 //            if (list.isIseverday() == true) {
-//                System.out.println(list.getTask());
+//                System.out.println(list.getTaskname());
 //            }
 //            if (list.hasdate(todaysDate)) {
-//                System.out.println(list.getTask());
+//                System.out.println(list.getTaskname());
 //
 //
 //            }

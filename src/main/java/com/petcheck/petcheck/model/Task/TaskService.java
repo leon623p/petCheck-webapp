@@ -2,6 +2,7 @@ package com.petcheck.petcheck.model.Task;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -10,8 +11,7 @@ import java.util.Optional;
 public class TaskService {
     private TaskRepository taskRepository;
 
-
-@Autowired
+    @Autowired
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
 
@@ -26,12 +26,12 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public List<Task> getTasks() {
+    public List<Task> findTasks() {
         Iterable<Task> found = taskRepository.findAll();
-        List<Task> tasks = new ArrayList<>();
+        List<Task> taskslist = new ArrayList<>();
         for (Task task : found) {
-            tasks.add(task);
+            taskslist.add(task);
         }
-        return tasks;
+        return taskslist;
     }
 }

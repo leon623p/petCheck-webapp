@@ -1,9 +1,8 @@
 package com.petcheck.petcheck.model.Trip;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.petcheck.petcheck.model.petAdmin.petAdmin;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -14,6 +13,10 @@ public class Trip {
     private LocalDate depature;
     private int triplength;
     private LocalDate returndate;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "admin_id", nullable = false)
+    private petAdmin petadmin;
 
     public LocalDate getDepature() {
         return depature;

@@ -1,4 +1,6 @@
 package com.petcheck.petcheck.model.Trip;
 
-public class TripRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface TripRepository extends CrudRepository<Trip,Long> {
 }
