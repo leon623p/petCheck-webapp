@@ -1,10 +1,10 @@
 package com.petcheck.petcheck.model.petAdmin;
 
-import com.petcheck.petcheck.model.Caretaker.Caretaker;
+
 //import com.petcheck.petcheck.model.Note.Note;
 import com.petcheck.petcheck.model.Note.Note;
 import com.petcheck.petcheck.model.Pet.Pet;
-import com.petcheck.petcheck.model.Trip.Trip;
+
 
 import javax.persistence.*;
 import java.util.Set;
@@ -18,10 +18,6 @@ public class petAdmin {
     private String name;
     @OneToMany(mappedBy = "petadmin")
     private Set<Pet> pet ;
-    @OneToOne(mappedBy = "petadmin")
-    private Trip trip;
-    @OneToOne(mappedBy = "petadmin")
-    private Caretaker caretaker;
     @OneToMany(mappedBy = "petadmin")
     private Set<Note> note;
 

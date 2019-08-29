@@ -13,6 +13,7 @@ public class Pet extends petAdmin {
     private Long id;
     private String name;
     private String type;
+    private String birthday;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "petAdmin_id", nullable = false)

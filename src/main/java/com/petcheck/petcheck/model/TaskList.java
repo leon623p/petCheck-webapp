@@ -29,19 +29,18 @@ public class TaskList {
     }
 
 
-//todo seems to work the task constructors might need some work but yeah
-    public List<Task> todaysTask() {
-        List<Task> todaystasklist = tasklist.stream()
-                .filter(w -> w.isIseverday() == true || w.hasdate(LocalDate.now()) == true)
-                .collect(Collectors.toList());
+////todo seems to work the task constructors might need some work but yeah
+//    public List<Task> todaysTask() {
+//        List<Task> todaystasklist = tasklist.stream()
+//                .filter(w -> w.isIseverday() == true || w.hasdate(LocalDate.now()) == true)
+//                .collect(Collectors.toList());
+//
+//
+//        return todaystasklist;
+//
+//    }
 
 
-        return todaystasklist;
-
-    }
-
-
-    //todo print tasks alphabetically/sorting (maybe handled on the frontend/ probably just copy todaystask() but add .sorted
 
 }
 

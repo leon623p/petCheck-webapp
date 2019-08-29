@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.LinkedList;
 
@@ -15,8 +16,61 @@ public class Task {
     private long id;
     private String taskname;
     private String memo;
-    private LinkedList<LocalDate> daterange = new LinkedList();
-    private boolean iseverday;
+    private boolean iseverday = true;
+    private boolean repeatsMonday = false;
+    private boolean repeatsTuesday = false;
+    private boolean repeatsWednesday = false;
+    private boolean repeatsThursday = false;
+    private boolean repeatsFriday = false;
+    private boolean repeatsSaturday = false;
+
+    public boolean isRepeatsMonday() {
+        return repeatsMonday;
+    }
+
+    public void setRepeatsMonday(boolean repeatsMonday) {
+        this.repeatsMonday = repeatsMonday;
+    }
+
+    public boolean isRepeatsTuesday() {
+        return repeatsTuesday;
+    }
+
+    public void setRepeatsTuesday(boolean repeatsTuesday) {
+        this.repeatsTuesday = repeatsTuesday;
+    }
+
+    public boolean isRepeatsWednesday() {
+        return repeatsWednesday;
+    }
+
+    public void setRepeatsWednesday(boolean repeatsWednesday) {
+        this.repeatsWednesday = repeatsWednesday;
+    }
+
+    public boolean isRepeatsThursday() {
+        return repeatsThursday;
+    }
+
+    public void setRepeatsThursday(boolean repeatsThursday) {
+        this.repeatsThursday = repeatsThursday;
+    }
+
+    public boolean isRepeatsFriday() {
+        return repeatsFriday;
+    }
+
+    public void setRepeatsFriday(boolean repeatsFriday) {
+        this.repeatsFriday = repeatsFriday;
+    }
+
+    public boolean isRepeatsSaturday() {
+        return repeatsSaturday;
+    }
+
+    public void setRepeatsSaturday(boolean repeatsSaturday) {
+        this.repeatsSaturday = repeatsSaturday;
+    }
 
 
     public long getId() {
@@ -29,41 +83,9 @@ public class Task {
 
     public void setTaskname(String taskname) {
         this.taskname = taskname;
-    }
-
-    public LinkedList<LocalDate> getDaterange() {
-        return daterange;
-    }
-
-    public void setDaterange(LinkedList<LocalDate> daterange) {
-        this.daterange = daterange;
-    }
-
-    public boolean hasdate(LocalDate date) {
-        boolean hasdate = false;
-        for (LocalDate str : daterange) {
-            if (date.isEqual(str)) {
-                 hasdate=  true;
-            }
-        }
-        return hasdate;
-    }
-
-
-    public void everyXdays(LocalDate start, LocalDate end, int interval, int triplength) {
-        this.iseverday = false;
-        for (int i = 0; i <= triplength; i++) {
-            LocalDate runningdate = start.plusDays(interval);
-            if (runningdate.isBefore(end)) {
-                daterange.add(runningdate);
-            }
-        }
 
 
     }
-
-
-
 
 
     public String getMemo() {
@@ -88,7 +110,7 @@ public class Task {
     public Task(String task, String memo) {
         this.taskname = task;
         this.memo = memo;
-        this.iseverday = true;
+
 
     }
 
@@ -98,18 +120,9 @@ public class Task {
 
     public Task(String task) {
         this.taskname = task;
-        this.iseverday = true;
+
 
     }
-
-    public Task(String task, String memo, LocalDate machinedate) {
-        this.taskname = task;
-        this.memo = memo;
-        this.iseverday = false;
-        daterange.add(machinedate);
-    }
-
-
 
 
 }
