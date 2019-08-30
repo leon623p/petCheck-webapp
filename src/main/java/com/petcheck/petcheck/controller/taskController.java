@@ -44,7 +44,7 @@ public class taskController {
 
     @GetMapping("/tasks")
     public String tasksview(Model model) {
-        model.addAttribute("tasksget", taskService.findTasks());
+        model.addAttribute("tasks", taskService.findTasks());
         return "tasks";
     }
 }

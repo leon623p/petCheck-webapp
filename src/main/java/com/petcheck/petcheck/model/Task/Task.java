@@ -23,6 +23,7 @@ public class Task {
     private boolean repeatsThursday = false;
     private boolean repeatsFriday = false;
     private boolean repeatsSaturday = false;
+    private boolean completed = false;
 
     public boolean isRepeatsMonday() {
         return repeatsMonday;

@@ -14,6 +14,8 @@ public class Vet {
     private String vetphonenumber;
     private String vetadress;
     private String buisnessname;
+    private String lastvistdate;
+    private String lastvistreason;
 
     public long getId() {
         return id;

@@ -14,7 +14,6 @@ public class TaskService {
     @Autowired
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-
     }
 
     public void saveTask(Task task) {
