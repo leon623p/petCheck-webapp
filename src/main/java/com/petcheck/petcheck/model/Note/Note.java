@@ -1,6 +1,6 @@
 package com.petcheck.petcheck.model.Note;
 
-import com.petcheck.petcheck.model.petAdmin.petAdmin;
+
 
 import javax.persistence.*;
 
@@ -16,9 +16,6 @@ public class Note {
     public Note() {
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "petAdmin_id", nullable = false)
-    private petAdmin petadmin;
 
     public String getName() {
         return name;
@@ -44,11 +41,4 @@ public class Note {
         this.tag = tag;
     }
 
-    public petAdmin getPetadmin() {
-        return petadmin;
-    }
-
-    public void setPetadmin(petAdmin petadmin) {
-        this.petadmin = petadmin;
-    }
 }
