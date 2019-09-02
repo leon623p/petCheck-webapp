@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.util.LinkedList;
+
 
 @Entity
 public class Task {
@@ -16,7 +14,9 @@ public class Task {
     private long id;
     private String taskname;
     private String memo;
+    private String taskowner;
     private boolean iseverday = true;
+    private boolean repeatsSunday = false;
     private boolean repeatsMonday = false;
     private boolean repeatsTuesday = false;
     private boolean repeatsWednesday = false;
@@ -24,6 +24,32 @@ public class Task {
     private boolean repeatsFriday = false;
     private boolean repeatsSaturday = false;
     private boolean completed = false;
+
+    public String getTaskowner() {
+        return taskowner;
+    }
+
+    public void setTaskowner(String taskowner) {
+        this.taskowner = taskowner;
+    }
+
+
+    public boolean isRepeatsSunday() {
+        return repeatsSunday;
+    }
+
+    public void setRepeatsSunday(boolean repeatsSunday) {
+        this.repeatsSunday = repeatsSunday;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
 
     public boolean isRepeatsMonday() {
         return repeatsMonday;
@@ -123,6 +149,57 @@ public class Task {
         this.taskname = task;
 
 
+    }
+
+    public boolean isdayofweek(String weekday) {
+        boolean istoday = false;
+        switch (weekday) {
+            case "SUNDAY":
+                if (repeatsSunday == true) {
+                    istoday = true;
+                }
+                ;
+                break;
+            case "MONDAY":
+                if (repeatsMonday == true) {
+                    istoday = true;
+                }
+                ;
+                break;
+            case "TUESDAY":
+                if (repeatsTuesday == true) {
+                    istoday = true;
+                }
+                ;
+                break;
+            case "WEDNESDAY":
+                if (repeatsWednesday == true) {
+                    istoday = true;
+                }
+                ;
+                break;
+            case "THURSDAY":
+                if (repeatsThursday == true) {
+                    istoday = true;
+                }
+                ;
+                break;
+            case "FRIDAY":
+                if (repeatsFriday == true) {
+                    istoday = true;
+                }
+                ;
+                break;
+            case "SATURDAY":
+                if (repeatsSaturday == true) {
+                    istoday = true;
+                }
+                ;
+                break;
+
+
+        }
+        return istoday;
     }
 
 
