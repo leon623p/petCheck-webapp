@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Note</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="..css/task.css" th:href="@{/css/task.css}"/>
+</head>
+<body>
+
+
+<h1>New Note</h1>
+<form action="#" th:action="@{/note}" th:object="${note}" method="post">
+    <p id="id" th:if="${note.id != null}"><input type="text" th:field="*{id}"/></p>
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+    <p>Body: <input type="text" th:field="*{body}" /></p>
+    <p>Tag: <input type="text" th:field="*{tag}" /></p>
+
+
+
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>

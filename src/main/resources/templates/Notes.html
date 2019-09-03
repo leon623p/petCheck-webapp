@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../css/task.css" th:href="@{/css/task.css}"/>
+</head>
+<body>
+<p th:if="${note != null}" th:text="'Added: ' + ${note.name}"></p>
+<a th:href="@{/note}">Create New Note</a>
+<table>
+    <thead>
+    <tr>
+        <th>Note name</th>
+        <th>Note body</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="note : ${notes}">
+        <td th:text="${note.name}">note-name</td>
+        <td th:text="${note.body}">note-body</td>
+        <td>
+            <a th:href="@{/note(id=${note.id})}">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

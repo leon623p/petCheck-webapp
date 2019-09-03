@@ -12,6 +12,23 @@ public class Note {
     private String name;
     private String body;
     private String tag;
+    private String noteowner;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNoteowner() {
+        return noteowner;
+    }
+
+    public void setNoteowner(String noteowner) {
+        this.noteowner = noteowner;
+    }
 
     public Note() {
     }

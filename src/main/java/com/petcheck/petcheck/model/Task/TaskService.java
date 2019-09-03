@@ -55,8 +55,6 @@ public class TaskService {
         List<Task> todaystasklist = taskslist.stream()
                 .filter(w ->  w.getTaskowner().equals(currentuser) & w.isIseverday() || w.isdayofweek(weekday) )
                 .collect(Collectors.toList());
-//|| w.hasdate(LocalDate.now()) == true)
-        //
 
         return todaystasklist;
 

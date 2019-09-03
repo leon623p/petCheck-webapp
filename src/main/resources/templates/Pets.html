@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../css/task.css" th:href="@{/css/task.css}"/>
+</head>
+<body>
+<p th:if="${pet != null}" th:text="'Added: ' + ${pet.name}"></p>
+<a th:href="@{/pet}">Add New Pet</a>
+<table>
+    <thead>
+    <tr>
+        <th>Pet name</th>
+        <th>Pet type</th>
+        <th>Pet Birthday</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pet : ${pets}">
+        <td th:text="${pet.name}">pet-name</td>
+        <td th:text="${pet.type}">pet-type</td>
+        <td th:text="${pet.birthday}">pet-birthday</td>
+        <td>
+            <a th:href="@{/pet(id=${pet.id})}">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
