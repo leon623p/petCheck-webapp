@@ -54,7 +54,7 @@ public class TaskService {
         }
 
         List<Task> todaystasklist = taskslist.stream()
-                .filter(w ->  w.getTaskowner().equals(currentuser) & w.isCompleted() == false & w.isIseverday() || w.isdayofweek(weekday) )
+                .filter(w ->  w.getTaskowner().equals(currentuser) & w.isCompleted() == false & (w.isIseverday() || w.isdayofweek(weekday)) )
                 .collect(Collectors.toList());
 
         return todaystasklist;

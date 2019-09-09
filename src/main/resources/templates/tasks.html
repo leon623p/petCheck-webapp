@@ -8,12 +8,14 @@
 <body>
 <p th:if="${task != null}" th:text="'Added: ' + ${task.taskname}"></p>
 <p th:if="${deleted != null}" th:text="'Task Deleted: ' + ${deleted}"></p>
-<a th:href="@{/task}">Create New Task</a>
-<table>
+
+<table class="table table-striped table-bordered table-secondary">
     <thead>
     <tr>
         <th>Task</th>
         <th>Memo</th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -21,11 +23,11 @@
         <td th:text="${task.taskname}">taskname</td>
         <td th:text="${task.memo}">memo</td>
         <td>
-            <a th:href="@{/task(id=${task.id})}">Edit</a>
+            <a class="btn btn-warning" th:href="@{/task(id=${task.id})}" role="button">Edit</a>
         </td>
         <td>
             <form th:method="delete" th:action="@{/task(id=${task.id})}">
-                <button type="submit">Delete</button>
+                <button class="btn btn-danger" type="submit">Delete</button>
             </form>
         </td>
     </tr>

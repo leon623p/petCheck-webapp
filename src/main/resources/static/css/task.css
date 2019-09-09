@@ -2,3 +2,8 @@
 p#id{
     visibility: hidden;
 }
+
+button{
+margin-left: 10px}
+
+body{background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Abstract-background-white-12.jpg/1555px-Abstract-background-white-12.jpg");}

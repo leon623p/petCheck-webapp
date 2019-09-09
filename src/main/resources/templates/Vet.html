@@ -9,15 +9,45 @@
 <h1>New Vet</h1>
 <form action="#" th:action="@{/vet}" th:object="${vet}" method="post">
     <p id="id" th:if="${vet.id != null}"><input type="text" th:field="*{id}"/></p>
-    <p> Vet Name: <input type="text" th:field="*{vetname}" /></p>
-    <p> Vet #: <input type="text" th:field="*{vetphonenumber}" /></p>
-    <p>Vet Buisness name <input type="text" th:field="*{buisnessname}" /></p>
-    <p> Vet Adress: <input type="text" th:field="*{vetadress}" /></p>
-    <p>Last visit date: <input type="date" th:field="*{lastvistdate}" /></p>
-    <p>Last vist reason: <input type="text" th:field="*{lastvistreason}" /></p>
+    <div class="form-group row">
+        <label for="vetname" class="col-sm-2 col-form-label">Vet Name:</label>
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="vetname" th:field="*{vetname}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="vetphone" class="col-sm-2 col-form-label">Vet Phone #:</label>
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="vetphone" th:field="*{vetphonenumber}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="vetbiz" class="col-sm-2 col-form-label">Vet Buisness Name:</label>
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="vetbiz" th:field="*{buisnessname}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="pettype" class="col-sm-2 col-form-label">Vet Address:</label>
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="pettype" th:field="*{vetadress}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="lastvistdate" class="col-sm-2 col-form-label">Last Visit Date:</label>
+        <div class="form-group mb-2">
+            <input type="date" class="form-control" id="lastvistdate" th:field="*{lastvistdate}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="lastvistreason" class="col-sm-2 col-form-label">Last Visit Reason:</label>
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="lastvistreason" th:field="*{lastvistreason}" />
+        </div>
+    </div>
+    <p id="id"> <input type="text" th:field="*{log}" /> </p>
 
-
-    <p><input type="submit" value="Submit" /></p>
+    <button class="btn btn-info" type="submit" value="submit">Submit</button>
 </form>
 </body>
 </html>
