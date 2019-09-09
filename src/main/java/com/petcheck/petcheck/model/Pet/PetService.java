@@ -48,5 +48,7 @@ public class PetService {
         return userspetlist;
 
     }
+    public void deletePet(Long id) { petrepository.deleteById(id);
+    }
 }
 

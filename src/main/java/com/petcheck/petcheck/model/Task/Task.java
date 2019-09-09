@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 
 @Entity
@@ -24,6 +25,8 @@ public class Task {
     private boolean repeatsFriday = false;
     private boolean repeatsSaturday = false;
     private boolean completed = false;
+
+
 
     public String getTaskowner() {
         return taskowner;

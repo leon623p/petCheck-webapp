@@ -1,16 +1,13 @@
 package com.petcheck.petcheck.controller;
 
-import com.petcheck.petcheck.model.Pet.Pet;
+
 import com.petcheck.petcheck.model.Vet.Vet;
 import com.petcheck.petcheck.model.Vet.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -56,5 +53,12 @@ public class vetController {
         String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("vets", vetservice.findUsersPets(currentuser));
         return "vets";
+    }
+
+    @DeleteMapping("/vet")
+    public String deleteVet(@RequestParam(name = "id") Long id, Model model) {
+        vetservice.deleteVet(id);
+        model.addAttribute("deleted", id);
+        return "redirect:/vets";
     }
 }

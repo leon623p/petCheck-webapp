@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Note</title>
-    <link rel="stylesheet" type="text/css" media="all"
-          href="..css/task.css" th:href="@{/css/task.css}"/>
+<head th:replace="fragments :: head">
+    <title>New Note</title>
 </head>
-<body>
 
+<nav th:replace="fragments :: navbar"></nav>
 
 <h1>New Note</h1>
 <form action="#" th:action="@{/note}" th:object="${note}" method="post">
     <p id="id" th:if="${note.id != null}"><input type="text" th:field="*{id}"/></p>
-    <p>Name: <input type="text" th:field="*{name}" /></p>
-    <p>Body: <input type="text" th:field="*{body}" /></p>
-    <p>Tag: <input type="text" th:field="*{tag}" /></p>
+    <div class="form-group row">
+        <label for="notename" class="col-sm-2 col-form-label">Note Name:</label>
+        <div class="form-group mb-2">
+     <input type="text" class="form-control" id="notename" th:field="*{name}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="notebody" class="col-sm-2 col-form-label">Note Body:</label>
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="notebody" th:field="*{body}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="notetag" class="col-sm-2 col-form-label">Note Tag:</label>
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="notetag" th:field="*{tag}" />
+        </div>
+    </div>
+
+
 
 
 

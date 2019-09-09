@@ -50,4 +50,12 @@ public class NoteService {
         return usersnotelist;
 
     }
+
+    public List<Note> findNoteByTag(String tag) {
+        return noterepository.findNoteByTag(tag + "%");
+    }
+
+    public void deleteNote(Long id) {
+        noterepository.deleteById(id);
+    }
 }

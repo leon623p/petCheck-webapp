@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+    <title>New Pet</title>
+</head>
+
+<nav th:replace="fragments :: navbar"></nav>
+<body>
+<table class = "table">
+    <thead>
+    <th th:text="${note.name}">notename</th>
+    <th th:text="'tag: ' + ${note.tag} "></th>
+
+    </thead>
+    <tbody>
+        <td th:text="${note.body}">notebody</td>
+
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -19,6 +19,7 @@ public class VetService {
     }
 
     public void saveVet(Vet Vet) {
+
         vetrepository.save(Vet);
     }
 
@@ -49,5 +50,8 @@ public class VetService {
 
         return usersvetlist;
 
+    }
+    public void deleteVet(Long id) {
+        vetrepository.deleteById(id);
     }
 }

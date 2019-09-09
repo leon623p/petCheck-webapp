@@ -1,30 +1,97 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Tasks</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Notes</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="all"
           href="../css/task.css" th:href="@{/css/task.css}"/>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Petcheck</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tasks
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/todaystasks">Today's tasks</a>
+                    <a class="dropdown-item" href="/tasks">Edit Tasks</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/task">Create new Task</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Note
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/notes">Notes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="note">Create New Note </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pets">Pets</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Vet
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/vets">Vet info</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/vet">Add a new Vet </a>
+                </div>
+            </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0"  th:method="get" th:action="@{/note-search}" th:object="${search}">
+            <input class="form-control mr-sm-2" type="text" th:field="*{tag}" aria-label="Search by Tag">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 <body>
 <p th:if="${note != null}" th:text="'Added: ' + ${note.name}"></p>
+<p th:if="${deleted != null}" th:text="'Note Deleted: ' + ${deleted}"></p>
 <a th:href="@{/note}">Create New Note</a>
+
+
 <table>
     <thead>
     <tr>
         <th>Note name</th>
-        <th>Note body</th>
+        <th>Note Tag</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="note : ${notes}">
-        <td th:text="${note.name}">note-name</td>
-        <td th:text="${note.body}">note-body</td>
+        <td th:text="${note.name}">notename</td>
+        <a th:href="@{/notebody(id=${note.id})}"> Read</a>
+        <td th:text="${note.tag}">tag</td>
         <td>
             <a th:href="@{/note(id=${note.id})}">Edit</a>
+        </td>
+        <td>
+            <form th:method="delete" th:action="@{/note(id=${note.id})}">
+                <button type="submit">Delete</button>
+            </form>
         </td>
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>

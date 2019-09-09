@@ -26,7 +26,7 @@ public class SecuredController {
         return "hello";
     }
 
-    @RequestMapping(value = {"/", "/home"})
+    @RequestMapping(value = {"/home"})
     public String index() {
         return "home";
     }

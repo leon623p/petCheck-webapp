@@ -6,9 +6,8 @@
 
 <nav th:replace="fragments :: navbar"></nav>
 <body>
-<p th:if="${task != null}" th:text="'Added: ' + ${task.taskname}"></p>
-<p th:if="${deleted != null}" th:text="'Task Deleted: ' + ${deleted}"></p>
-<a th:href="@{/task}">Create New Task</a>
+
+<a th:href="@{/newday}">Start a new day</a>
 <table>
     <thead>
     <tr>
@@ -21,12 +20,7 @@
         <td th:text="${task.taskname}">taskname</td>
         <td th:text="${task.memo}">memo</td>
         <td>
-            <a th:href="@{/task(id=${task.id})}">Edit</a>
-        </td>
-        <td>
-            <form th:method="delete" th:action="@{/task(id=${task.id})}">
-                <button type="submit">Delete</button>
-            </form>
+            <a th:href="@{/completed(id=${task.id})}">Completed</a>
         </td>
     </tr>
     </tbody>

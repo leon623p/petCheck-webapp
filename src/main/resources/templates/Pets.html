@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Tasks</title>
-    <link rel="stylesheet" type="text/css" media="all"
-          href="../css/task.css" th:href="@{/css/task.css}"/>
+<head th:replace="fragments :: head">
+    <title>Pets</title>
 </head>
+
+<nav th:replace="fragments :: navbar"></nav>
 <body>
 <p th:if="${pet != null}" th:text="'Added: ' + ${pet.name}"></p>
+<p th:if="${deleted != null}" th:text="'Pet Deleted: ' + ${deleted}"></p>
 <a th:href="@{/pet}">Add New Pet</a>
 <table>
     <thead>
@@ -25,6 +25,12 @@
         <td>
             <a th:href="@{/pet(id=${pet.id})}">Edit</a>
         </td>
+        <td>
+            <form th:method="delete" th:action="@{/pet(id=${pet.id})}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+
     </tr>
     </tbody>
 </table>

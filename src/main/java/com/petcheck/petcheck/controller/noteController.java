@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import com.petcheck.petcheck.model.noteSearch;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -44,22 +42,40 @@ public class noteController {
         note.setNoteowner(user);
         noteservice.saveNote(note);
         model.addAttribute("notes", noteservice.findNotes());
-
+        model.addAttribute("search", new noteSearch());
 
         return "notes";
     }
-//todo do i need a non user version??
-//    @GetMapping("/notes")
-//    public String notesview(Model model) {
-//        model.addAttribute("notes", noteservice.findNotes());
-//        return "notes";
-//    }
 
     @GetMapping("/notes")
-    public String usernotelist(Model model) {
+    public String usernoteslist(Model model) {
         String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("notes", noteservice.findUsersNotes(currentuser));
+        model.addAttribute("search", new noteSearch());
         return "notes";
+    }
+
+
+    @GetMapping("/note-search")
+    public String findNote(@ModelAttribute noteSearch search, Model model) {
+        model.addAttribute("notes", noteservice.findNoteByTag(search.getTag()));
+        model.addAttribute("search", search);
+        return "notes";
+    }
+
+    @DeleteMapping("/note")
+    public String deleteNote(@RequestParam(name = "id") Long id, Model model) {
+        noteservice.deleteNote(id);
+        model.addAttribute("deleted", id);
+        return "redirect:/notes";
+    }
+
+    @GetMapping("/notebody")
+    public String notebody(@RequestParam(name = "id") Long id, Model model) {
+       Note  note = noteservice.findNoteById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Could not find note" + id));
+        model.addAttribute("note", note);
+        return "notebody";
     }
 }
 

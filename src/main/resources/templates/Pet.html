@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Note</title>
-    <link rel="stylesheet" type="text/css" media="all"
-          href="..css/task.css" th:href="@{/css/task.css}"/>
+<head th:replace="fragments :: head">
+    <title>New Pet</title>
 </head>
-<body>
 
+<nav th:replace="fragments :: navbar"></nav>
 
 <h1>New Pet</h1>
 <form action="#" th:action="@{/pet}" th:object="${pet}" method="post">
     <p id="id" th:if="${pet.id != null}"><input type="text" th:field="*{id}"/></p>
-    <p>Name: <input type="text" th:field="*{name}" /></p>
-    <p>Pet type: <input type="text" th:field="*{type}" /></p>
-    <p>Birthday: <input type="date" th:field="*{birthday}" /></p>
+    <div class="form-group row">
+        <label for="petname" class="col-sm-2 col-form-label">Pet Name:</label>
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="petname" th:field="*{name}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="pettype" class="col-sm-2 col-form-label">Pet Type:</label>
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="pettype" th:field="*{type}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="petbirthday" class="col-sm-2 col-form-label">Pet Birthday</label>
+        <div class="form-group mb-2">
+            <input type="date" class="form-control" id="petbirthday" th:field="*{birthday}" />
+        </div>
+    </div>
+
 
 
 

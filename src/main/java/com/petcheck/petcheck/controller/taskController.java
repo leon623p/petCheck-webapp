@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -45,7 +42,7 @@ public class taskController {
         String user = SecurityContextHolder.getContext().getAuthentication().getName();
         task.setTaskowner(user);
         taskService.saveTask(task);
-        model.addAttribute("tasks", taskService.findTasks());
+        model.addAttribute("tasks", taskService.findTasks(user));
 
 
         return "tasks";
@@ -53,7 +50,8 @@ public class taskController {
 
     @GetMapping("/tasks")
     public String tasksview(Model model) {
-        model.addAttribute("tasks", taskService.findTasks());
+        String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("tasks", taskService.findTasks(currentuser));
         return "tasks";
     }
 
@@ -61,6 +59,28 @@ public class taskController {
     public String todaystasklist(Model model) {
        String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("tasks", taskService.findtodaysTask(currentuser));
-        return "tasks";
+        return "todaystasks";
     }
+    @DeleteMapping("/task")
+    public String deleteTask(@RequestParam(name="id")Long id, Model model) {
+        taskService.deleteTask(id);
+        model.addAttribute("deleted", id);
+        return "redirect:/tasks";
+    }
+
+    @GetMapping("/newday")
+    public String newday(){
+        String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
+        taskService.newday(currentuser);
+        return "redirect:/todaystasks";
+    }
+
+    @GetMapping("/completed")
+    public String completed(@RequestParam(name="id")Long id, Model model){
+        taskService.Completed(id);
+        model.addAttribute("completed", id);
+        return "redirect:/todaystasks";
+    }
+
+
 }

@@ -16,8 +16,32 @@ public class Vet {
     private String buisnessname;
     private String lastvistdate;
     private String lastvistreason;
-    private String log;
+    private String log ="";
     private String vetowner;
+
+    public String getLastvistdate() {
+        return lastvistdate;
+    }
+
+    public void setLastvistdate(String lastvistdate) {
+        this.lastvistdate = lastvistdate;
+    }
+
+    public String getLastvistreason() {
+        return lastvistreason;
+    }
+
+    public void setLastvistreason(String lastvistreason) {
+        this.lastvistreason = lastvistreason;
+    }
+
+    public String getLog() {
+        return log;
+    }
+
+    public void setLog(String log) {
+        this.log = log;
+    }
 
     public String getVetowner() {
         return vetowner;
@@ -26,7 +50,6 @@ public class Vet {
     public void setVetowner(String vetowner) {
         this.vetowner = vetowner;
     }
-//todo i should be able to use .concat on the set last vist reason method to make it automatically add previous vists to log
 
     public long getId() {
         return id;

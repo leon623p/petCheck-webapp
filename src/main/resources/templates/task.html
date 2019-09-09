@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Task</title>
-    <link rel="stylesheet" type="text/css" media="all"
-          href="..css/task.css" th:href="@{/css/task.css}"/>
+<head th:replace="fragments :: head">
+    <title>New Task</title>
 </head>
-<body>
 
-
+<nav th:replace="fragments :: navbar"></nav>
 <h1>New Task</h1>
 <form action="#" th:action="@{/task}" th:object="${task}" method="post">
     <p id="id" th:if="${task.id != null}"><input type="text" th:field="*{id}"/></p>
     <p>Task: <input type="text" th:field="*{taskname}" /></p>
     <p>Memo(optional): <input type="text" th:field="*{memo}" /></p>
-    <p>Repeats on: (leave blank for everyday)</p>
+    <input type="checkbox" name="isEverday" th:field="*{iseverday}">is everyday?</input>
+    <p>Repeats on:</p>
     <p><input type="checkbox" name="isSunday" th:field="*{repeatsSunday}">Sunday </input>
         <input type="checkbox" name="isMonday" th:field="*{repeatsMonday}">Monday</input>
         <input type="checkbox" name="isTuesday" th:field="*{repeatsTuesday}">Tuesday</input>
@@ -22,7 +19,7 @@
         <input type="checkbox" name="isThrusday" th:field="*{repeatsThursday}">Thursday</input>
         <input type="checkbox" name="isFriday" th:field="*{repeatsFriday}">Friday</input>
         <input type="checkbox" name="isSaturday" th:field="*{repeatsSaturday}">Saturday</input></p>
-
+    <input type="checkbox" name="Completed" th:field="*{completed}">completed</input></p>
 
 
     <p><input type="submit" value="Submit" /></p>

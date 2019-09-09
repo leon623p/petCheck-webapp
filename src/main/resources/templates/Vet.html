@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+<head th:replace="fragments :: head">
     <title>Vet</title>
-    <link rel="stylesheet" type="text/css" media="all"
-          href="..css/task.css" th:href="@{/css/task.css}"/>
 </head>
-<body>
 
+<nav th:replace="fragments :: navbar"></nav>
 
 <h1>New Vet</h1>
 <form action="#" th:action="@{/vet}" th:object="${vet}" method="post">
     <p id="id" th:if="${vet.id != null}"><input type="text" th:field="*{id}"/></p>
     <p> Vet Name: <input type="text" th:field="*{vetname}" /></p>
+    <p> Vet #: <input type="text" th:field="*{vetphonenumber}" /></p>
     <p>Vet Buisness name <input type="text" th:field="*{buisnessname}" /></p>
-
-
+    <p> Vet Adress: <input type="text" th:field="*{vetadress}" /></p>
+    <p>Last visit date: <input type="date" th:field="*{lastvistdate}" /></p>
+    <p>Last vist reason: <input type="text" th:field="*{lastvistreason}" /></p>
 
 
     <p><input type="submit" value="Submit" /></p>

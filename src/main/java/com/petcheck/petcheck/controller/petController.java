@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 @Controller
@@ -56,5 +53,11 @@ public class petController {
         String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("pets", petservice.findUsersPets(currentuser));
         return "pets";
+    }
+    @DeleteMapping("/pet")
+    public String deletePet(@RequestParam(name="id")Long id, Model model) {
+        petservice.deletePet(id);
+        model.addAttribute("deleted", id);
+        return "redirect:/pets";
     }
 }
