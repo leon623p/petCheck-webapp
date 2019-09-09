@@ -37,7 +37,7 @@ public class VetService {
         return vetslist;
     }
 
-    public List<Vet> findUsersPets(String currentuser) {
+    public List<Vet> findUsersVets(String currentuser) {
         Iterable<Vet> found = vetrepository.findAll();
         List<Vet> vetslist = new ArrayList<>();
         for (Vet vet : found) {

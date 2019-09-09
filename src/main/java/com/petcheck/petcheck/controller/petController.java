@@ -41,7 +41,7 @@ public class petController {
         String user = SecurityContextHolder.getContext().getAuthentication().getName();
         pet.setPetowner(user);
         petservice.savePet(pet);
-        model.addAttribute("pets", petservice.findPets());
+        model.addAttribute("pets", petservice.findUsersPets(user));
 
 
         return "pets";

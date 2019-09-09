@@ -43,7 +43,7 @@ public class vetController {
         vet.setLog(vet.getLog().concat("||"+ vet.getLastvistreason().concat(" on: " + vet.getLastvistdate())));
         vetservice.saveVet(vet);
 
-        model.addAttribute("vets", vetservice.findVets());
+        model.addAttribute("vets", vetservice.findUsersVets(user));
 
 
         return "vets";
@@ -53,7 +53,7 @@ public class vetController {
     @GetMapping("/vets")
     public String userpetslist(Model model) {
         String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
-        model.addAttribute("vets", vetservice.findUsersPets(currentuser));
+        model.addAttribute("vets", vetservice.findUsersVets(currentuser));
         return "vets";
     }
 

@@ -3,7 +3,27 @@ p#id{
     visibility: hidden;
 }
 
+div#homecarousel{
+margin-left: 500px
+}
+
+div#hometitle{
+margin-left: 500px
+}
+
+div#loginbutton{
+   padding: 16px;
+margin-left: 630px
+}
+
 button{
+   padding: 16px;
 margin-left: 10px}
+
+
+.carousel {
+  width:25%;
+  height:25%;
+}
 
 body{background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Abstract-background-white-12.jpg/1555px-Abstract-background-white-12.jpg");}

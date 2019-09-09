@@ -41,7 +41,7 @@ public class noteController {
         String user = SecurityContextHolder.getContext().getAuthentication().getName();
         note.setNoteowner(user);
         noteservice.saveNote(note);
-        model.addAttribute("notes", noteservice.findNotes());
+        model.addAttribute("notes", noteservice.findUsersNotes(user));
         model.addAttribute("search", new noteSearch());
 
         return "notes";
