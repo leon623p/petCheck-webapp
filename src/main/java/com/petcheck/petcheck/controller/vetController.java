@@ -40,7 +40,7 @@ public class vetController {
     public String saveVet(@ModelAttribute Vet vet, Model model) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName();
         vet.setVetowner(user);
-        vet.setLog(vet.getLog().concat("||"+ vet.getLastvistreason().concat(" on: " + vet.getLastvistdate())));
+        vet.setLog(vet.getLog().concat("||" + vet.getLastvistreason().concat(" on: " + vet.getLastvistdate())));
         vetservice.saveVet(vet);
 
         model.addAttribute("vets", vetservice.findUsersVets(user));

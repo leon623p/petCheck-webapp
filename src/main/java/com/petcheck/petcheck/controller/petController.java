@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+
 @Controller
 public class petController {
 
@@ -54,8 +55,9 @@ public class petController {
         model.addAttribute("pets", petservice.findUsersPets(currentuser));
         return "pets";
     }
+
     @DeleteMapping("/pet")
-    public String deletePet(@RequestParam(name="id")Long id, Model model) {
+    public String deletePet(@RequestParam(name = "id") Long id, Model model) {
         petservice.deletePet(id);
         model.addAttribute("deleted", id);
         return "redirect:/pets";

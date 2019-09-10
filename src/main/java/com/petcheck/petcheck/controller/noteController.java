@@ -72,7 +72,7 @@ public class noteController {
 
     @GetMapping("/notebody")
     public String notebody(@RequestParam(name = "id") Long id, Model model) {
-       Note  note = noteservice.findNoteById(id)
+        Note note = noteservice.findNoteById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Could not find note" + id));
         model.addAttribute("note", note);
         return "notebody";

@@ -18,7 +18,8 @@ public class NoteService {
         this.noterepository = noterepository;
     }
 
-    public void saveNote(Note note) {noterepository.save(note);
+    public void saveNote(Note note) {
+        noterepository.save(note);
     }
 
 

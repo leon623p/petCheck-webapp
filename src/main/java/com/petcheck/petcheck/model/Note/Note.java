@@ -1,7 +1,6 @@
 package com.petcheck.petcheck.model.Note;
 
 
-
 import javax.persistence.*;
 
 @Entity

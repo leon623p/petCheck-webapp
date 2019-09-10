@@ -1,7 +1,6 @@
 package com.petcheck.petcheck.model.Task;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +16,6 @@ import java.util.stream.Collectors;
 public class TaskService {
     private TaskRepository taskRepository;
     private LocalDate todaysDate = LocalDate.now();
-
 
 
     @Autowired
@@ -38,8 +36,9 @@ public class TaskService {
         Iterable<Task> found = taskRepository.findAll();
         List<Task> taskslist = new ArrayList<>();
         for (Task task : found) {
-            if(task.getTaskowner().equals(currentuser)){
-            taskslist.add(task);}
+            if (task.getTaskowner().equals(currentuser)) {
+                taskslist.add(task);
+            }
 
         }
         return taskslist;
@@ -54,7 +53,7 @@ public class TaskService {
         }
 
         List<Task> todaystasklist = taskslist.stream()
-                .filter(w ->  w.getTaskowner().equals(currentuser) & w.isCompleted() == false & (w.isIseverday() || w.isdayofweek(weekday)) )
+                .filter(w -> w.getTaskowner().equals(currentuser) & w.isCompleted() == false & (w.isIseverday() || w.isdayofweek(weekday)))
                 .collect(Collectors.toList());
 
         return todaystasklist;
@@ -65,24 +64,24 @@ public class TaskService {
         taskRepository.deleteById(id);
     }
 
-    public void newday(String currentuser){
+    public void newday(String currentuser) {
         Iterable<Task> found = taskRepository.findAll();
         for (Task task : found) {
-            if(task.getTaskowner().equals(currentuser)){
+            if (task.getTaskowner().equals(currentuser)) {
                 task.setCompleted(false);
-                taskRepository.save(task);}
+                taskRepository.save(task);
+            }
         }
 
     }
-    public void Completed(Long id){
+
+    public void Completed(Long id) {
         Optional<Task> found = taskRepository.findById(id);
-       found.get().setCompleted(true);
-       taskRepository.save(found.get());
-
-
+        found.get().setCompleted(true);
+        taskRepository.save(found.get());
 
 
     }
 
-    }
+}
 

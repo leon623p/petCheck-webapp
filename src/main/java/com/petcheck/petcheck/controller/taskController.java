@@ -57,26 +57,27 @@ public class taskController {
 
     @GetMapping("/todaystasks")
     public String todaystasklist(Model model) {
-       String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
+        String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("tasks", taskService.findtodaysTask(currentuser));
         return "todaystasks";
     }
+
     @DeleteMapping("/task")
-    public String deleteTask(@RequestParam(name="id")Long id, Model model) {
+    public String deleteTask(@RequestParam(name = "id") Long id, Model model) {
         taskService.deleteTask(id);
         model.addAttribute("deleted", id);
         return "redirect:/tasks";
     }
 
     @GetMapping("/newday")
-    public String newday(){
+    public String newday() {
         String currentuser = SecurityContextHolder.getContext().getAuthentication().getName();
         taskService.newday(currentuser);
         return "redirect:/todaystasks";
     }
 
     @GetMapping("/completed")
-    public String completed(@RequestParam(name="id")Long id, Model model){
+    public String completed(@RequestParam(name = "id") Long id, Model model) {
         taskService.Completed(id);
         model.addAttribute("completed", id);
         return "redirect:/todaystasks";

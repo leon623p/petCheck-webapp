@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
 public class Vet {
 
@@ -16,7 +17,7 @@ public class Vet {
     private String buisnessname;
     private String lastvistdate;
     private String lastvistreason;
-    private String log ="";
+    private String log = "";
     private String vetowner;
 
     public String getLastvistdate() {

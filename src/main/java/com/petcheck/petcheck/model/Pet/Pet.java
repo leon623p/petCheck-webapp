@@ -1,7 +1,6 @@
 package com.petcheck.petcheck.model.Pet;
 
 
-
 import javax.persistence.*;
 
 @Entity
@@ -59,7 +58,7 @@ public class Pet {
 
     private String petowner;
 
-   // private String profilepic;
+    // private String profilepic;
 
 }
 

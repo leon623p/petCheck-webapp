@@ -51,6 +51,7 @@ public class VetService {
         return usersvetlist;
 
     }
+
     public void deleteVet(Long id) {
         vetrepository.deleteById(id);
     }

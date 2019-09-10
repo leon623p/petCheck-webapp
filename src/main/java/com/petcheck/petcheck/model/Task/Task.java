@@ -27,7 +27,6 @@ public class Task {
     private boolean completed = false;
 
 
-
     public String getTaskowner() {
         return taskowner;
     }
