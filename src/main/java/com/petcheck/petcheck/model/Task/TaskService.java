@@ -45,7 +45,7 @@ public class TaskService {
     }
 
     public List<Task> findtodaysTask(String currentuser) {
-        String weekday = todaysDate.getDayOfWeek().toString();
+        String weekday = todaysDate.toString();
         Iterable<Task> found = taskRepository.findAll();
         List<Task> taskslist = new ArrayList<>();
         for (Task task : found) {
