@@ -83,5 +83,17 @@ public class TaskService {
 
     }
 
+    public List<Task> findTasksapi() {
+        Iterable<Task> found = taskRepository.findAll();
+        List<Task> taskslist = new ArrayList<>();
+        for (Task task : found) {
+//            if (task.getTaskowner().equals(currentuser)) {
+                taskslist.add(task);
+//            }
+
+        }
+        return taskslist;
+    }
+
 }
 
