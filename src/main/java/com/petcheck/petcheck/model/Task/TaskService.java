@@ -77,7 +77,8 @@ public class TaskService {
 
     public void Completed(Long id) {
         Optional<Task> found = taskRepository.findById(id);
-        found.get().setCompleted(true);
+        boolean completed = found.get().isCompleted();
+        found.get().setCompleted(!completed);
         taskRepository.save(found.get());
 
 
